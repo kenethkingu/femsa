@@ -4,12 +4,13 @@ export const tradingServices = [
     title: 'Equipment & Machinery',
     description: 'Heavy duty, manufacturing, processing, and packaging machinery sourced directly from world-class global manufacturers.',
     items: [
-      'Industrial processing plants & assembly lines',
-      'Food & beverage packaging equipment',
-      'Construction & earthmoving machinery',
-      'Agricultural processing machinery',
-      'Material handling & warehousing lifts',
-      'Custom industrial machinery design sourcing'
+      'Plastic injection, blowing, and filling machines',
+      'Date stamping and coding equipment',
+      'Labelling machines (PVC, OPP, and adhesive)',
+      'Shrink-wrapping and final packaging machines',
+      'Water treatment and filtration systems',
+      'Conveyors, industrial mixers, compressors & utilities equipment',
+      'Quality Control (QC) and lab testing equipment'
     ]
   },
   {
@@ -17,12 +18,11 @@ export const tradingServices = [
     title: 'Raw Materials & Packaging',
     description: 'High-grade chemical, paper, plastic, and metal raw materials supporting local manufacturing industries.',
     items: [
-      'Polymers & plastic raw granules (PET, HDPE, PP)',
-      'Industrial chemicals & processing reagents',
-      'Premium paperboard & corrugated packaging materials',
-      'Flexible packaging films & foil laminates',
-      'Steel, copper & aluminum raw materials',
-      'Food-grade ingredients & processing additives'
+      'PET, HDPE, PP, LDPE, and LLDPE resins',
+      'PET preforms',
+      'Plastic caps and closures',
+      'Industrial labels (PVC, OPP, and adhesive)',
+      'Plastic bags, shrink films, and wrapping materials'
     ]
   },
   {
@@ -33,8 +33,8 @@ export const tradingServices = [
       'Electric motors, gearboxes & variable speed drives',
       'Pneumatic & hydraulic valves, cylinders, and seals',
       'Precision bearings, belts, chains & power transmission components',
-      'Electrical switchgear, control panels & PLCs',
-      'Industrial filtration elements & pump spare parts',
+      'Electrical switchgear, control panels, sensors, and PLCs',
+      'Industrial filtration elements, shafts & pump spare parts',
       'Custom manufactured machined wear parts'
     ]
   },

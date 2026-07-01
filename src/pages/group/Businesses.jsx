@@ -2,15 +2,20 @@ import React from 'react';
 import SectionHeading from '../../components/ui/SectionHeading';
 import SegmentCard from '../../components/ui/SegmentCard';
 import StripeShape from '../../components/ui/StripeShape';
-import BrandPattern from '../../components/ui/BrandPattern';
 import { businessSegments } from '../../data/businessSegments';
 
 export default function Businesses() {
   return (
     <div className="bg-femsa-smoke min-h-screen pb-20">
+      <title>Our Business Segments — Femsa Group</title>
+      <meta name="description" content="Explore Femsa Group holding segments including Legal (Attorneys), Financial Services (Microfinance), Trading, Healthcare, Education, and Agriculture." />
+      <meta property="og:title" content="Our Business Segments — Femsa Group" />
+      <meta property="og:description" content="Explore Femsa Group holding segments including Legal (Attorneys), Financial Services (Microfinance), Trading, Healthcare, Education, and Agriculture in East Africa." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.myfemsa.com/businesses" />
+      <meta name="twitter:card" content="summary_large_image" />
       {/* Header section */}
       <section className="relative bg-femsa-navy text-white py-20 overflow-hidden">
-        <BrandPattern color="white" opacity="opacity-[0.03]" />
         <StripeShape color="orange" count={3} position="top-right" size="medium" opacity="opacity-20" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

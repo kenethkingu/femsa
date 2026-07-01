@@ -1,16 +1,21 @@
 import React from 'react';
 import SectionHeading from '../../components/ui/SectionHeading';
 import StripeShape from '../../components/ui/StripeShape';
-import BrandPattern from '../../components/ui/BrandPattern';
 import { manufacturerBenefits, customerBenefits } from '../../data/whyPartner';
 
 export default function WhyPartner() {
 
   return (
     <div className="bg-femsa-smoke min-h-screen pb-20">
+      <title>Why Partner With Us — Femsa Global Trading</title>
+      <meta name="description" content="Discover how we optimize procurement for industrial customers and open East African markets for global manufacturers." />
+      <meta property="og:title" content="Why Partner With Us — Femsa Global Trading" />
+      <meta property="og:description" content="Discover how we optimize procurement for industrial customers and open East African markets for global manufacturers." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.myfemsa.com/trading/why-partner" />
+      <meta name="twitter:card" content="summary_large_image" />
       {/* Header */}
       <section className="relative bg-femsa-navy text-white py-20 overflow-hidden">
-        <BrandPattern color="white" opacity="opacity-[0.03]" />
         <StripeShape color="orange" count={3} position="top-right" size="medium" opacity="opacity-20" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

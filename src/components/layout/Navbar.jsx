@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import Logo from '../ui/Logo';
 import Button from '../ui/Button';
 import StripeShape from '../ui/StripeShape';
@@ -13,6 +14,7 @@ export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const shouldReduce = useReducedMotion();
 
   // Search logic covering business divisions, trading services, and navigation
   const handleSearch = (query) => {
@@ -132,18 +134,19 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-femsa-navy/95 backdrop-blur-md py-3 shadow-lg border-b border-white/5' 
-          : 'bg-femsa-navy py-5'
-      }`}
+    <motion.nav
+      className="fixed top-0 left-0 right-0 z-50"
+      animate={scrolled
+        ? { backgroundColor: 'rgba(3,33,119,0.97)', backdropFilter: 'blur(12px)', paddingTop: '0.75rem', paddingBottom: '0.75rem', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }
+        : { backgroundColor: 'rgba(3,33,119,1)', backdropFilter: 'blur(0px)', paddingTop: '1.25rem', paddingBottom: '1.25rem', boxShadow: 'none' }
+      }
+      transition={shouldReduce ? { duration: 0 } : { duration: 0.25, ease: 'easeOut' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo Brand area */}
           <div className="flex-shrink-0 flex items-center">
-            <Link to={isTrading ? "/trading" : "/"} className="flex items-center gap-3">
+            <Link to={isTrading ? "/trading" : "/"} className="flex items-center gap-5">
               {/* Using reverse/white logo for navy navbar */}
               <Logo variant="reverse" className="h-10 md:h-12" />
             </Link>
@@ -227,40 +230,46 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer menu */}
-      <div 
-        className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? 'max-h-screen opacity-100 mt-2 border-t border-white/5' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="px-4 pt-4 pb-6 space-y-3 bg-femsa-navy shadow-inner">
-          {currentLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`block px-3 py-3 rounded text-sm font-heading font-bold uppercase tracking-wider ${
-                isActive(link.path)
-                  ? 'bg-femsa-orange text-white'
-                  : 'text-slate-200 hover:bg-white/5 hover:text-white'
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-          
-          <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
-            {isTrading ? (
-              <Button to="/" variant="outline-white" className="w-full text-xs">
-                Back to Femsa Group
-              </Button>
-            ) : (
-              <Button to="/trading" variant="primary" className="w-full text-xs">
-                Go to Global Trading
-              </Button>
-            )}
-          </div>
-        </div>
-      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={shouldReduce ? { opacity: 0 } : { opacity: 0, height: 0 }}
+            animate={shouldReduce ? { opacity: 1 } : { opacity: 1, height: 'auto' }}
+            exit={shouldReduce ? { opacity: 0 } : { opacity: 0, height: 0 }}
+            transition={shouldReduce ? { duration: 0.15 } : { duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden overflow-hidden border-t border-white/5 mt-2"
+          >
+            <div className="px-4 pt-4 pb-6 space-y-3 bg-femsa-navy shadow-inner">
+              {currentLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`block px-3 py-3 rounded text-sm font-heading font-bold uppercase tracking-wider ${
+                    isActive(link.path)
+                      ? 'bg-femsa-orange text-white'
+                      : 'text-slate-200 hover:bg-white/5 hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              
+              <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
+                {isTrading ? (
+                  <Button to="/" variant="outline-white" className="w-full text-xs">
+                    Back to Femsa Group
+                  </Button>
+                ) : (
+                  <Button to="/trading" variant="primary" className="w-full text-xs">
+                    Go to Global Trading
+                  </Button>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Search Modal Overlay */}
       {isSearchOpen && (
@@ -347,6 +356,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 }

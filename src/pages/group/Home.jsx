@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'motion/react';
 import StripeShape from '../../components/ui/StripeShape';
-import BrandPattern from '../../components/ui/BrandPattern';
 import SectionHeading from '../../components/ui/SectionHeading';
 import Button from '../../components/ui/Button';
 import SegmentCard from '../../components/ui/SegmentCard';
 import { businessSegments } from '../../data/businessSegments';
 import { groupCoreValues } from '../../data/coreValues';
+import {
+  heroContainer, heroChild,
+  staggerContainer, cardItem,
+  fadeUp, fadeOnly, getVariants,
+} from '../../lib/motionVariants';
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('mission'); // 'mission' | 'vision' | 'values'
+  const [activeTab, setActiveTab] = useState('mission');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const shouldReduce = useReducedMotion();
+  const heroVars      = getVariants(shouldReduce, heroContainer);
+  const heroChildVars = getVariants(shouldReduce, heroChild, fadeOnly);
+  const staggerVars   = getVariants(shouldReduce, staggerContainer);
+  const cardVars      = getVariants(shouldReduce, cardItem, fadeOnly);
+  const sectionVars   = getVariants(shouldReduce, fadeUp, fadeOnly);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % businessSegments.length);
@@ -23,10 +34,15 @@ export default function Home() {
 
   return (
     <div className="relative">
+      <title>Femsa Group — Stronger Together. Always Moving Forward.</title>
+      <meta name="description" content="Femsa Group is a leading Tanzanian holding company driving sustainable growth and investment across legal, trading, microfinance, healthcare, education, and agriculture." />
+      <meta property="og:title" content="Femsa Group — Diversified Tanzanian Holding Company" />
+      <meta property="og:description" content="Driving sustainable growth and investment across legal, trading, microfinance, healthcare, education, and agriculture in East Africa." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.myfemsa.com" />
+      <meta name="twitter:card" content="summary_large_image" />
       {/* 1. Hero Section */}
       <section className="relative bg-femsa-navy text-white pt-24 pb-32 overflow-hidden min-h-[85vh] flex items-center">
-        {/* Sunburst Pattern Texture */}
-        <BrandPattern color="white" opacity="opacity-[0.03]" />
         
         {/* Signature Diagonal Shards */}
         <StripeShape color="orange" count={3} position="top-right" size="large" opacity="opacity-20" />
@@ -35,27 +51,32 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content Column */}
-            <div className="space-y-8 max-w-xl">
-              <span className="inline-flex items-center text-xs font-heading font-black text-femsa-orange uppercase tracking-widest bg-white/5 px-3 py-1.5 rounded">
+            <motion.div
+              className="space-y-8 max-w-xl"
+              variants={heroVars}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.span variants={heroChildVars} className="inline-flex items-center text-xs font-heading font-black text-femsa-orange uppercase tracking-widest bg-white/5 px-3 py-1.5 rounded">
                 Tanzanian Holding Group
-              </span>
+              </motion.span>
               
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-black leading-tight uppercase">
+              <motion.h1 variants={heroChildVars} className="text-4xl sm:text-5xl md:text-6xl font-heading font-black leading-tight uppercase">
                 Stronger Together. <br />
                 <span className="text-femsa-orange">Always Moving</span> <br />
                 Forward!
-              </h1>
+              </motion.h1>
               
-              <p className="text-slate-300 text-base md:text-lg leading-relaxed font-body">
+              <motion.p variants={heroChildVars} className="text-slate-300 text-base md:text-lg leading-relaxed font-body">
                 Femsa Group Limited empowers businesses with innovative solutions, strategic guidance, and resources, driving sustainable growth, trust, and long-term success.
-              </p>
+              </motion.p>
 
-              <div className="flex flex-wrap gap-4 items-center pt-2">
+              <motion.div variants={heroChildVars} className="flex flex-wrap gap-4 items-center pt-2">
                 <Button to="/about" variant="primary">
                   Explore More
                 </Button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Right Map/Globe Column */}
             <div className="relative flex justify-center lg:justify-end">
@@ -126,16 +147,16 @@ export default function Home() {
             {/* Right Column - Static Descriptive Text */}
             <div className="lg:col-span-8 space-y-6 pt-2">
               <p className="text-slate-700 text-base leading-relaxed font-body text-justify">
-                FEMSA Group is a dynamic and diversified organization committed to delivering innovative solutions that create lasting value for individuals, businesses, and communities. Built on a foundation of integrity, professionalism, and vision, FEMSA Group operates with the belief that sustainable growth comes from empowering people and bridging opportunities across sectors. Our focus is on providing services that drive progress, enhance trust, and support long-term development.
+                Femsa Group is a dynamic and diversified organization committed to delivering innovative solutions that create lasting value for individuals, businesses, and communities. Built on a foundation of integrity, professionalism, and vision, Femsa Group operates with the belief that sustainable growth comes from empowering people and bridging opportunities across sectors. Our focus is on providing services that drive progress, enhance trust, and support long-term development.
               </p>
               <p className="text-slate-700 text-base leading-relaxed font-body text-justify">
-                At FEMSA Group, we understand the evolving needs of today's world and strive to meet them through excellence, innovation, and reliability. Whether supporting enterprises, fostering financial inclusion, or facilitating growth in local and international markets, our work is guided by a people-centered approach. We believe that true success lies in building relationships based on transparency, trust, and shared prosperity.
+                At Femsa Group, we understand the evolving needs of today's world and strive to meet them through excellence, innovation, and reliability. Whether supporting enterprises, fostering financial inclusion, or facilitating growth in local and international markets, our work is guided by a people-centered approach. We believe that true success lies in building relationships based on transparency, trust, and shared prosperity.
               </p>
               <p className="text-slate-700 text-base leading-relaxed font-body text-justify">
-                With a strong commitment to impact, FEMSA Group is not just about delivering services—it is about creating meaningful change. We are driven by the mission to empower communities, strengthen businesses, and open doors to new possibilities. By combining expertise with innovation, we position ourselves as a trusted partner that clients and stakeholders can depend on to navigate challenges and unlock opportunities.
+                With a strong commitment to impact, Femsa Group is not just about delivering services—it is about creating meaningful change. We are driven by the mission to empower communities, strengthen businesses, and open doors to new possibilities. By combining expertise with innovation, we position ourselves as a trusted partner that clients and stakeholders can depend on to navigate challenges and unlock opportunities.
               </p>
               <p className="text-slate-700 text-base leading-relaxed font-body text-justify">
-                Our vision is clear: to be a leading force in shaping a future where individuals and organizations alike thrive. Through dedication, resilience, and forward thinking, FEMSA Group continues to build a legacy of growth, empowerment, and excellence.
+                Our vision is clear: to be a leading force in shaping a future where individuals and organizations alike thrive. Through dedication, resilience, and forward thinking, Femsa Group continues to build a legacy of growth, empowerment, and excellence.
               </p>
             </div>
 
@@ -271,13 +292,21 @@ export default function Home() {
                 </svg>
               </div>
 
-              {/* Photo */}
-              <div className="relative w-full max-w-lg aspect-[4/3] rounded overflow-hidden shadow-xl z-10">
-                <img
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=700&auto=format&fit=crop"
-                  alt="Professional global trading services"
-                  className="w-full h-full object-cover"
-                />
+              {/* Brand-styled visual tile */}
+              <div className="relative w-full max-w-lg aspect-[4/3] rounded overflow-hidden shadow-xl z-10 bg-gradient-to-tr from-femsa-navy to-[#052d9a] flex items-center justify-center">
+                <div className="absolute inset-0 opacity-10">
+                  <svg width="100%" height="100%">
+                    <line x1="-10%" y1="0%" x2="110%" y2="120%" stroke="#FFFFFF" strokeWidth="5" />
+                    <line x1="-10%" y1="30%" x2="110%" y2="150%" stroke="#FFFFFF" strokeWidth="5" />
+                    <line x1="-10%" y1="60%" x2="110%" y2="180%" stroke="#FFFFFF" strokeWidth="5" />
+                  </svg>
+                </div>
+                <div className="text-center relative z-10 px-6">
+                  <p className="text-femsa-orange font-heading font-extrabold text-xs uppercase tracking-widest mb-3">Business Segments</p>
+                  <p className="text-white font-heading font-black text-4xl md:text-5xl uppercase leading-tight">
+                    {businessSegments[currentSlide].name}
+                  </p>
+                </div>
               </div>
 
               {/* Right Arrow - positioned on edge like design */}
@@ -342,58 +371,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Testimonials Section (Words From Them) */}
-      <section className="py-24 bg-femsa-smoke">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title="Words from them"
-            subtitle="Client Testimonials"
-            align="center"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            <div className="bg-white p-8 rounded shadow-sm border border-slate-100 flex flex-col justify-between">
-              <p className="text-slate-600 text-sm md:text-base leading-relaxed italic mb-8 font-body">
-                "Femsa Global Trading consistently delivers high-quality industrial components, ensuring that our plant maintains maximum uptime. Their customer service and regulatory navigation are exceptional."
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-femsa-navy/10 flex-shrink-0">
-                  {/* TODO: replace with real photography */}
-                  <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
-                    alt="Corporate Client avatar"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-heading font-bold text-femsa-navy text-sm uppercase">Joseph Mlay</h4>
-                  <p className="text-xs text-femsa-orange font-semibold">Chief Engineer, East Africa Cement</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded shadow-sm border border-slate-100 flex flex-col justify-between">
-              <p className="text-slate-600 text-sm md:text-base leading-relaxed italic mb-8 font-body">
-                "The legal guidance from Femsa Attorneys was instrumental in organizing our group structure and securing local compliance. A highly dedicated and professional legal partner in Tanzania."
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-femsa-navy/10 flex-shrink-0">
-                  {/* TODO: replace with real photography */}
-                  <img
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
-                    alt="Corporate Client avatar"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-heading font-bold text-femsa-navy text-sm uppercase">Amani Salum</h4>
-                  <p className="text-xs text-femsa-orange font-semibold">Director, Salum Agricultural Co.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       {/* 7. Get in touch Contact Form Section */}
       <section className="py-20 bg-white relative overflow-hidden border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -424,7 +401,7 @@ export default function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </span>
-                  <a href="mailto:info@femsa.com" className="text-sm text-femsa-orange font-bold hover:underline">info@femsa.com</a>
+                  <a href="mailto:info@myfemsa.com" className="text-sm text-femsa-orange font-bold hover:underline">info@myfemsa.com</a>
                 </div>
               </div>
             </div>

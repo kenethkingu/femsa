@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import SectionHeading from '../../components/ui/SectionHeading';
 import StripeShape from '../../components/ui/StripeShape';
-import BrandPattern from '../../components/ui/BrandPattern';
 import Button from '../../components/ui/Button';
 
 export default function Contact() {
@@ -21,9 +20,15 @@ export default function Contact() {
 
   return (
     <div className="bg-femsa-smoke min-h-screen pb-20">
+      <title>Contact Us — Femsa Group</title>
+      <meta name="description" content="Get in touch with Femsa Group corporate headquarters in Dar es Salaam, Tanzania." />
+      <meta property="og:title" content="Contact Us — Femsa Group" />
+      <meta property="og:description" content="Get in touch with Femsa Group corporate headquarters in Dar es Salaam, Tanzania." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.myfemsa.com/contact" />
+      <meta name="twitter:card" content="summary_large_image" />
       {/* Header */}
       <section className="relative bg-femsa-navy text-white py-20 overflow-hidden">
-        <BrandPattern color="white" opacity="opacity-[0.03]" />
         <StripeShape color="orange" count={3} position="top-right" size="medium" opacity="opacity-20" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -67,29 +72,30 @@ export default function Contact() {
               <div className="flex items-start">
                 <span className="p-3 bg-white rounded text-femsa-orange border border-slate-100 shadow-sm mr-4 flex-shrink-0">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </span>
+                <div>
+                  <h4 className="font-heading font-extrabold text-femsa-navy text-sm uppercase">Phone Line</h4>
+                  <p className="text-slate-500 text-sm font-body">+255 761 351 371</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <span className="p-3 bg-white rounded text-femsa-orange border border-slate-100 shadow-sm mr-4 flex-shrink-0">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </span>
                 <div>
                   <h4 className="font-heading font-extrabold text-femsa-navy text-sm uppercase">Email Inbox</h4>
-                  <a href="mailto:info@femsa.com" className="text-femsa-orange text-sm font-bold font-body hover:underline">
-                    info@femsa.com
+                  <a href="mailto:info@myfemsa.com" className="text-femsa-orange text-sm font-bold font-body hover:underline">
+                    info@myfemsa.com
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="relative border border-slate-200 rounded overflow-hidden aspect-[16/10] bg-slate-100 flex items-center justify-center shadow-inner">
-              <div className="absolute inset-0 bg-slate-200" />
-              <div className="relative z-10 text-center p-4">
-                <svg className="w-10 h-10 text-slate-400 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
-                <p className="text-xs uppercase tracking-wider font-heading font-black text-slate-500">Google Map Placeholder</p>
-                <p className="text-[10px] text-slate-400 font-body">Dar es Salaam Center, Tanzania</p>
-              </div>
-            </div>
           </div>
 
           {/* Form Column */}

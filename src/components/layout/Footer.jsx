@@ -181,10 +181,10 @@ export default function Footer() {
                   </svg>
                 </span>
                 <a
-                  href={`mailto:${isTrading ? 'info@myfemsa.com' : 'info@femsa.com'}`}
+                  href="mailto:info@myfemsa.com"
                   className="text-sm text-slate-300 hover:text-white transition-colors duration-300"
                 >
-                  {isTrading ? 'info@myfemsa.com' : 'info@femsa.com'}
+                  info@myfemsa.com
                 </a>
               </li>
               <li className="flex items-start">
@@ -194,7 +194,7 @@ export default function Footer() {
                   </svg>
                 </span>
                 <span className="text-sm text-slate-300">
-                  {isTrading ? 'www.myfemsa.com' : 'www.femsa.com'}
+                  www.myfemsa.com
                 </span>
               </li>
             </ul>

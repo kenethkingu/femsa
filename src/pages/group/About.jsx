@@ -2,15 +2,20 @@ import React from 'react';
 import SectionHeading from '../../components/ui/SectionHeading';
 import ValueCard from '../../components/ui/ValueCard';
 import StripeShape from '../../components/ui/StripeShape';
-import BrandPattern from '../../components/ui/BrandPattern';
 import { groupCoreValues } from '../../data/coreValues';
 
 export default function About() {
   return (
     <div className="bg-femsa-smoke min-h-screen">
+      <title>About Us — Femsa Group</title>
+      <meta name="description" content="Learn about Femsa Group corporate governance, mission, vision, and core values guiding our holding divisions in Tanzania." />
+      <meta property="og:title" content="About Us — Femsa Group" />
+      <meta property="og:description" content="Learn about Femsa Group corporate governance, mission, vision, and core values guiding our holding divisions in Tanzania." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.myfemsa.com/about" />
+      <meta name="twitter:card" content="summary_large_image" />
       {/* Hero Header */}
       <section className="relative bg-femsa-navy text-white py-20 overflow-hidden">
-        <BrandPattern color="white" opacity="opacity-[0.03]" />
         <StripeShape color="orange" count={3} position="top-right" size="medium" opacity="opacity-20" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
