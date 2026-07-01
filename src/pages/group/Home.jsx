@@ -11,6 +11,7 @@ import { groupCoreValues } from '../../data/coreValues';
 export default function Home() {
   const [activeTab, setActiveTab] = useState('mission'); // 'mission' | 'vision' | 'values'
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % businessSegments.length);
@@ -53,20 +54,6 @@ export default function Home() {
                 <Button to="/about" variant="primary">
                   Explore More
                 </Button>
-                
-                {/* Circular Play Button */}
-                <button
-                  onClick={() => alert("Corporate video mockup presentation.")}
-                  className="flex items-center gap-3 text-sm font-heading font-bold uppercase tracking-wider text-white hover:text-femsa-orange transition-colors duration-300 group"
-                  aria-label="Play corporate video"
-                >
-                  <span className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white/5 group-hover:border-femsa-orange group-hover:bg-femsa-orange/20 transition-all duration-300">
-                    <svg className="w-4 h-4 text-white ml-0.5 fill-current" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </span>
-                  <span>Watch Video</span>
-                </button>
               </div>
             </div>
 
@@ -163,48 +150,48 @@ export default function Home() {
           <p className="text-center text-[10px] uppercase font-heading font-black tracking-widest text-slate-400 mb-8">
             Featured In & Corporate Partnerships
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-40 grayscale">
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-85 hover:opacity-100 transition-opacity duration-300">
             {/* Coca-Cola */}
-            <div className="flex items-center">
-              <svg viewBox="0 0 120 30" className="h-7 w-auto text-slate-700" fill="currentColor" aria-label="Coca-Cola Logo">
-                <path d="M5 24 Q30 8 60 24 T115 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.3" />
+            <div className="flex items-center hover:scale-105 transition-transform duration-300">
+              <svg viewBox="0 0 120 30" className="h-7 w-auto text-[#E41E26]" fill="currentColor" aria-label="Coca-Cola Logo">
+                <path d="M5 24 Q30 8 60 24 T115 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
                 <text x="10" y="20" fontFamily="Brush Script MT, cursive" fontWeight="bold" fontSize="22" letterSpacing="0.5">Coca-Cola</text>
               </svg>
             </div>
 
             {/* Uber */}
-            <div className="flex items-center">
-              <svg viewBox="0 0 70 30" className="h-6 w-auto text-slate-700" fill="currentColor" aria-label="Uber Logo">
+            <div className="flex items-center hover:scale-105 transition-transform duration-300">
+              <svg viewBox="0 0 70 30" className="h-6 w-auto text-black" fill="currentColor" aria-label="Uber Logo">
                 <text x="0" y="22" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="22" letterSpacing="-1">Uber</text>
               </svg>
             </div>
 
             {/* Vodacom */}
-            <div className="flex items-center">
-              <svg viewBox="0 0 135 30" className="h-6 w-auto text-slate-700" fill="currentColor" aria-label="Vodacom Logo">
+            <div className="flex items-center hover:scale-105 transition-transform duration-300">
+              <svg viewBox="0 0 135 30" className="h-6 w-auto" fill="currentColor" aria-label="Vodacom Logo">
                 <g transform="translate(0, 1)">
-                  <circle cx="11" cy="14" r="10" fill="currentColor" />
-                  <path d="M9 10 c2 0 4 1.5 4 4 c0 3 -2 5 -4.5 7.5 l-0.5 0.5 l-0.5 -1 c1-1.5 2.5-3 2.5-5.5 c-1 0 -1.5 -0.5 -1.5 -1.5 c0 -1.5 1.5 -3 4 -3 z" fill="#f5f5f5" />
+                  <circle cx="11" cy="14" r="10" fill="#E60000" />
+                  <path d="M9 10 c2 0 4 1.5 4 4 c0 3 -2 5 -4.5 7.5 l-0.5 0.5 l-0.5 -1 c1-1.5 2.5-3 2.5-5.5 c-1 0 -1.5 -0.5 -1.5 -1.5 c0 -1.5 1.5 -3 4 -3 z" fill="#ffffff" />
                 </g>
-                <text x="28" y="21" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="17" letterSpacing="-0.5">vodacom</text>
+                <text x="28" y="21" className="text-black" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="800" fontSize="17" letterSpacing="-0.5">vodacom</text>
               </svg>
             </div>
 
             {/* Autotronics */}
-            <div className="flex items-center">
+            <div className="flex items-center hover:scale-105 transition-transform duration-300">
               <svg viewBox="0 0 180 30" className="h-6 w-auto text-slate-700" fill="currentColor" aria-label="Autotronics Logo">
                 <g transform="translate(0, 2)">
-                  <circle cx="10" cy="11" r="9" stroke="currentColor" strokeWidth="2.2" fill="none" />
-                  <circle cx="10" cy="11" r="3.5" fill="currentColor" />
-                  <path d="M10 0 L10 5 M10 17 L10 22 M0 11 L5 11 M15 11 L20 11 M3 5 L6 8 M14 14 L17 17 M3 17 L6 14 M14 5 L17 8" stroke="currentColor" strokeWidth="1.5" />
+                  <circle cx="10" cy="11" r="9" stroke="#032177" strokeWidth="2.2" fill="none" />
+                  <circle cx="10" cy="11" r="3.5" fill="#f96419" />
+                  <path d="M10 0 L10 5 M10 17 L10 22 M0 11 L5 11 M15 11 L20 11 M3 5 L6 8 M14 14 L17 17 M3 17 L6 14 M14 5 L17 8" stroke="#032177" strokeWidth="1.5" />
                 </g>
-                <text x="28" y="19" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="900" fontSize="15" letterSpacing="0.8">AUTOTRONICS</text>
+                <text x="28" y="19" className="text-slate-800" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="900" fontSize="15" letterSpacing="0.8">AUTOTRONICS</text>
               </svg>
             </div>
 
             {/* Moulinex */}
-            <div className="flex items-center">
-              <svg viewBox="0 0 110 30" className="h-7 w-auto text-slate-700" fill="currentColor" aria-label="Moulinex Logo">
+            <div className="flex items-center hover:scale-105 transition-transform duration-300">
+              <svg viewBox="0 0 110 30" className="h-7 w-auto text-[#D8232A]" fill="currentColor" aria-label="Moulinex Logo">
                 <text x="2" y="22" fontFamily="Brush Script MT, Dancing Script, cursive" fontStyle="italic" fontWeight="bold" fontSize="22">Moulinex</text>
               </svg>
             </div>
@@ -444,56 +431,70 @@ export default function Home() {
 
             {/* Right column - form */}
             <div className="lg:col-span-8">
-              <form
-                onSubmit={(e) => { e.preventDefault(); alert('Thank you! Your message has been received.'); }}
-                className="space-y-5"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Full name</label>
-                    <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Your basic name" />
-                  </div>
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Email Address</label>
-                    <input type="email" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Your working mail" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Company / Organization</label>
-                    <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Give details of name" />
-                  </div>
-                  <div>
-                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Position / Title</label>
-                    <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Choose job description" />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Services of Interest</label>
-                  <select required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm text-slate-700 transition-colors">
-                    <option value="">Select Service</option>
-                    <option value="trading">Femsa Global Trading Limited (Trading & Supply Chain)</option>
-                    <option value="attorneys">Femsa Attorneys (Legal Services)</option>
-                    <option value="microfinance">Femsa Microfinance (Financial Services)</option>
-                    <option value="healthcare">Femsa Healthcare (Health Solutions)</option>
-                    <option value="education">Femsa Education (Learning & Development)</option>
-                    <option value="agriculture">Femsa Agriculture (Agri-Business Solutions)</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Message</label>
-                  <textarea rows="5" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Write your message details..." />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Project Min Budget</label>
-                  <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="e.g. 50,000 USD" />
-                </div>
-                <div className="flex justify-center pt-2">
-                  <Button type="submit" variant="primary" className="px-12">
-                    Submit
+              {isSubmitted ? (
+                <div className="bg-femsa-navy text-white p-8 md:p-12 rounded shadow-lg border-l-4 border-femsa-orange text-center space-y-4 relative overflow-hidden">
+                  <StripeShape color="orange" count={2} position="bottom-right" size="medium" opacity="opacity-20" />
+                  <span className="text-4xl text-femsa-orange block font-heading font-black">✓ SUCCESS</span>
+                  <h3 className="text-2xl font-heading font-black uppercase text-white tracking-tight">Message Received</h3>
+                  <p className="text-slate-300 font-body text-sm max-w-md mx-auto leading-relaxed">
+                    Thank you! Your message has been safely delivered to our Dar es Salaam headquarters. Our advisory desk will get in touch with you shortly.
+                  </p>
+                  <Button onClick={() => setIsSubmitted(false)} variant="outline-white" className="mt-4 text-xs py-2 px-6">
+                    Submit Another Message
                   </Button>
                 </div>
-              </form>
+              ) : (
+                <form
+                  onSubmit={(e) => { e.preventDefault(); setIsSubmitted(true); }}
+                  className="space-y-5"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Full name</label>
+                      <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Your basic name" />
+                    </div>
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Email Address</label>
+                      <input type="email" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Your working mail" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Company / Organization</label>
+                      <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Give details of name" />
+                    </div>
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Position / Title</label>
+                      <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Choose job description" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Services of Interest</label>
+                    <select required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm text-slate-700 transition-colors">
+                      <option value="">Select Service</option>
+                      <option value="trading">Femsa Global Trading Limited (Trading & Supply Chain)</option>
+                      <option value="attorneys">Femsa Attorneys (Legal Services)</option>
+                      <option value="microfinance">Femsa Microfinance (Financial Services)</option>
+                      <option value="healthcare">Femsa Healthcare (Health Solutions)</option>
+                      <option value="education">Femsa Education (Learning & Development)</option>
+                      <option value="agriculture">Femsa Agriculture (Agri-Business Solutions)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Message</label>
+                    <textarea rows="5" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Write your message details..." />
+                  </div>
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Project Min Budget</label>
+                    <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="e.g. 50,000 USD" />
+                  </div>
+                  <div className="flex justify-center pt-2">
+                    <Button type="submit" variant="primary" className="px-12">
+                      Submit
+                  </Button>
+                  </div>
+                </form>
+              )}
             </div>
 
           </div>

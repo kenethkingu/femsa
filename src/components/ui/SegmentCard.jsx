@@ -113,14 +113,14 @@ export default function SegmentCard({ segment }) {
 
   if (isInternal) {
     return (
-      <Link to={link} className={cardClasses}>
+      <Link id={id} to={link} className={cardClasses}>
         {Content}
       </Link>
     );
   }
 
   return (
-    <a href={link} className={cardClasses}>
+    <a id={id} href={link} className={cardClasses}>
       {Content}
     </a>
   );

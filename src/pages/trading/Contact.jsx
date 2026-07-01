@@ -14,10 +14,11 @@ export default function Contact() {
     specification: '',
     quantity: ''
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Thank you, ${form.contactPerson}. Your B2B procurement request for ${form.company} has been received.`);
+    setIsSubmitted(true);
     setForm({
       company: '',
       contactPerson: '',
@@ -102,124 +103,139 @@ export default function Contact() {
           </div>
 
           {/* Form Column */}
-          <div className="lg:col-span-7 bg-white p-8 md:p-10 border border-slate-100 rounded shadow-md relative overflow-hidden">
+          <div className="lg:col-span-7 bg-white p-8 md:p-10 border border-slate-100 rounded shadow-md relative overflow-hidden min-h-[500px] flex flex-col justify-center">
             <StripeShape color="orange" count={1} position="top-right" size="medium" opacity="opacity-[0.03]" />
             
-            <h3 className="text-2xl font-heading font-black text-femsa-navy uppercase mb-6">Request RFQ</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                    Company Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.company}
-                    onChange={(e) => setForm({ ...form, company: e.target.value })}
-                    className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
-                    placeholder="e.g. Industrial Ltd"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                    Contact Person
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.contactPerson}
-                    onChange={(e) => setForm({ ...form, contactPerson: e.target.value })}
-                    className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
-                    placeholder="e.g. Salim Khalfan"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                    Work Email
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
-                    placeholder="e.g. salim@company.com"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                    Telephone Number
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
-                    placeholder="e.g. +255 761..."
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                  Procurement Category
-                </label>
-                <select
-                  value={form.category}
-                  onChange={(e) => setForm({ ...form, category: e.target.value })}
-                  className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm text-slate-700"
-                >
-                  <option value="equipment-machinery">Equipment & Machinery</option>
-                  <option value="raw-materials-packaging">Raw Materials & Packaging</option>
-                  <option value="spare-parts-components">Spare Parts & Components</option>
-                  <option value="consumables-supplies">Consumables & Plant Supplies</option>
-                </select>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div className="sm:col-span-1">
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                    Quantity Required
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.quantity}
-                    onChange={(e) => setForm({ ...form, quantity: e.target.value })}
-                    className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
-                    placeholder="e.g. 50 Tons / 2 Units"
-                  />
-                </div>
-
-                <div className="sm:col-span-2">
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                    Required Specifications / Custom Requirements
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.specification}
-                    onChange={(e) => setForm({ ...form, specification: e.target.value })}
-                    className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
-                    placeholder="e.g. Grade A, ASTM standard, PET resin pellets..."
-                  />
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <Button type="submit" variant="primary" className="w-full">
-                  Submit RFQ Request
+            {isSubmitted ? (
+              <div className="text-center space-y-4 py-8 relative z-10">
+                <span className="text-5xl text-femsa-orange block font-heading font-black">✓ SUCCESS</span>
+                <h3 className="text-2xl font-heading font-black uppercase text-femsa-navy">RFQ Request Sent</h3>
+                <p className="text-slate-600 font-body text-sm max-w-md mx-auto leading-relaxed">
+                  Thank you! Your B2B procurement request has been successfully submitted. Our industrial sourcing coordinators will review your specifications and issue a formal quote within 24 business hours.
+                </p>
+                <Button onClick={() => setIsSubmitted(false)} variant="primary" className="mt-4 text-xs py-2.5 px-8">
+                  Submit Another RFQ
                 </Button>
               </div>
-            </form>
+            ) : (
+              <>
+                <h3 className="text-2xl font-heading font-black text-femsa-navy uppercase mb-6">Request RFQ</h3>
+                
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                        Company Name
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={form.company}
+                        onChange={(e) => setForm({ ...form, company: e.target.value })}
+                        className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
+                        placeholder="e.g. Industrial Ltd"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                        Contact Person
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={form.contactPerson}
+                        onChange={(e) => setForm({ ...form, contactPerson: e.target.value })}
+                        className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
+                        placeholder="e.g. Salim Khalfan"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                        Work Email
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
+                        placeholder="e.g. salim@company.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                        Telephone Number
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
+                        placeholder="e.g. +255 761..."
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                      Procurement Category
+                    </label>
+                    <select
+                      value={form.category}
+                      onChange={(e) => setForm({ ...form, category: e.target.value })}
+                      className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm text-slate-700"
+                    >
+                      <option value="equipment-machinery">Equipment & Machinery</option>
+                      <option value="raw-materials-packaging">Raw Materials & Packaging</option>
+                      <option value="spare-parts-components">Spare Parts & Components</option>
+                      <option value="consumables-supplies">Consumables & Plant Supplies</option>
+                    </select>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div className="sm:col-span-1">
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                        Quantity Required
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={form.quantity}
+                        onChange={(e) => setForm({ ...form, quantity: e.target.value })}
+                        className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
+                        placeholder="e.g. 50 Tons / 2 Units"
+                      />
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                        Required Specifications / Custom Requirements
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={form.specification}
+                        onChange={(e) => setForm({ ...form, specification: e.target.value })}
+                        className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm"
+                        placeholder="e.g. Grade A, ASTM standard, PET resin pellets..."
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <Button type="submit" variant="primary" className="w-full">
+                      Submit RFQ Request
+                    </Button>
+                  </div>
+                </form>
+              </>
+            )}
           </div>
 
         </div>

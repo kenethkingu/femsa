@@ -11,10 +11,11 @@ export default function Contact() {
     subject: '',
     message: ''
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Thank you, ${form.name}. Your message has been sent to Femsa Group.`);
+    setIsSubmitted(true);
     setForm({ name: '', email: '', subject: '', message: '' });
   };
 
@@ -92,90 +93,105 @@ export default function Contact() {
           </div>
 
           {/* Form Column */}
-          <div className="lg:col-span-7 bg-white p-8 md:p-10 border border-slate-100 rounded shadow-md relative overflow-hidden">
+          <div className="lg:col-span-7 bg-white p-8 md:p-10 border border-slate-100 rounded shadow-md relative overflow-hidden min-h-[420px] flex flex-col justify-center">
             <StripeShape color="orange" count={1} position="top-right" size="medium" opacity="opacity-[0.03]" />
             
-            <h3 className="text-2xl font-heading font-black text-femsa-navy uppercase mb-6">Send a Message</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors duration-200"
-                    placeholder="e.g. John Doe"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                    Company Name
-                  </label>
-                  <input
-                    type="text"
-                    value={form.company || ''}
-                    onChange={(e) => setForm({ ...form, company: e.target.value })}
-                    className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors duration-200"
-                    placeholder="e.g. Acme Corp"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors duration-200"
-                    placeholder="e.g. john@company.com"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    value={form.phone || ''}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors duration-200"
-                    placeholder="+255 700 000 000"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
-                  Message
-                </label>
-                <textarea
-                  required
-                  rows="5"
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors duration-200"
-                  placeholder="Write your query details..."
-                />
-              </div>
-
-              <div className="pt-2 flex justify-center">
-                <Button type="submit" variant="primary" className="px-12">
-                  Send Message
+            {isSubmitted ? (
+              <div className="text-center space-y-4 py-8 relative z-10">
+                <span className="text-5xl text-femsa-orange block font-heading font-black">✓ SUCCESS</span>
+                <h3 className="text-2xl font-heading font-black uppercase text-femsa-navy">Message Sent</h3>
+                <p className="text-slate-600 font-body text-sm max-w-md mx-auto leading-relaxed">
+                  Thank you! Your message has been successfully delivered. Our relations manager will review your submission and reply shortly.
+                </p>
+                <Button onClick={() => setIsSubmitted(false)} variant="primary" className="mt-4 text-xs py-2.5 px-8">
+                  Send Another Message
                 </Button>
               </div>
-            </form>
+            ) : (
+              <>
+                <h3 className="text-2xl font-heading font-black text-femsa-navy uppercase mb-6">Send a Message</h3>
+                
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors duration-200"
+                        placeholder="e.g. John Doe"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                        Company Name
+                      </label>
+                      <input
+                        type="text"
+                        value={form.company || ''}
+                        onChange={(e) => setForm({ ...form, company: e.target.value })}
+                        className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors duration-200"
+                        placeholder="e.g. Acme Corp"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors duration-200"
+                        placeholder="e.g. john@company.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                        Phone
+                      </label>
+                      <input
+                        type="tel"
+                        value={form.phone || ''}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors duration-200"
+                        placeholder="+255 700 000 000"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      required
+                      rows="5"
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors duration-200"
+                      placeholder="Write your query details..."
+                    />
+                  </div>
+
+                  <div className="pt-2 flex justify-center">
+                    <Button type="submit" variant="primary" className="px-12">
+                      Send Message
+                    </Button>
+                  </div>
+                </form>
+              </>
+            )}
 
           </div>
 

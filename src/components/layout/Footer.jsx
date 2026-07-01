@@ -6,11 +6,12 @@ import Button from '../ui/Button';
 export default function Footer() {
   const { pathname } = useLocation();
   const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
   const isTrading = pathname.startsWith('/trading');
 
   const handleSubscribe = (e) => {
     e.preventDefault();
-    alert(`Thank you for subscribing with: ${email}`);
+    setSubscribed(true);
     setEmail('');
   };
 
@@ -207,22 +208,29 @@ export default function Footer() {
             <p className="text-sm text-slate-300 mb-4 leading-relaxed font-body">
               Subscribe to receive Femsa announcements and market intelligence insights.
             </p>
-            <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
-              <input
-                type="email"
-                required
-                placeholder="Business Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="px-4 py-2.5 bg-white/5 border border-white/10 rounded focus:outline-none focus:border-femsa-orange text-white text-sm"
-              />
-              <button
-                type="submit"
-                className="w-full py-2.5 bg-femsa-orange hover:bg-white text-white hover:text-femsa-navy font-heading font-bold text-xs uppercase tracking-wider rounded transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                Subscribe
-              </button>
-            </form>
+            {subscribed ? (
+              <div className="p-4 bg-white/5 border border-white/10 rounded text-center space-y-2">
+                <p className="text-xs font-heading font-bold uppercase text-femsa-orange">✓ Subscribed</p>
+                <p className="text-[11px] text-slate-300 font-body">Thank you for joining our newsletter list.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
+                <input
+                  type="email"
+                  required
+                  placeholder="Business Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="px-4 py-2.5 bg-white/5 border border-white/10 rounded focus:outline-none focus:border-femsa-orange text-white text-sm"
+                />
+                <button
+                  type="submit"
+                  className="w-full py-2.5 bg-femsa-orange hover:bg-white text-white hover:text-femsa-navy font-heading font-bold text-xs uppercase tracking-wider rounded transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Subscribe
+                </button>
+              </form>
+            )}
           </div>
         </div>
 
