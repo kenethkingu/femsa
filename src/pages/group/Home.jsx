@@ -411,31 +411,47 @@ export default function Home() {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Full Name</label>
-                    <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="e.g. John Doe" />
+                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Full name</label>
+                    <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Your basic name" />
                   </div>
                   <div>
                     <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Email Address</label>
-                    <input type="email" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="john@company.com" />
+                    <input type="email" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Your working mail" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Company Name</label>
-                    <input type="text" className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Your company" />
+                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Company / Organization</label>
+                    <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Give details of name" />
                   </div>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Phone</label>
-                    <input type="tel" className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="+255 700 000 000" />
+                    <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Position / Title</label>
+                    <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Choose job description" />
                   </div>
                 </div>
                 <div>
+                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Services of Interest</label>
+                  <select required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm text-slate-700 transition-colors">
+                    <option value="">Select Service</option>
+                    <option value="trading">Femsa Global Trading Limited (Trading & Supply Chain)</option>
+                    <option value="attorneys">Femsa Attorneys (Legal Services)</option>
+                    <option value="microfinance">Femsa Microfinance (Financial Services)</option>
+                    <option value="healthcare">Femsa Healthcare (Health Solutions)</option>
+                    <option value="education">Femsa Education (Learning & Development)</option>
+                    <option value="agriculture">Femsa Agriculture (Agri-Business Solutions)</option>
+                  </select>
+                </div>
+                <div>
                   <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Message</label>
-                  <textarea rows="5" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Write your query details..." />
+                  <textarea rows="5" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="Write your message details..." />
+                </div>
+                <div>
+                  <label className="block text-xs uppercase tracking-wider font-heading font-extrabold text-slate-500 mb-2">Project Min Budget</label>
+                  <input type="text" required className="w-full px-4 py-3 bg-femsa-smoke border border-slate-200 rounded focus:outline-none focus:border-femsa-orange text-sm transition-colors" placeholder="e.g. 50,000 USD" />
                 </div>
                 <div className="flex justify-center pt-2">
                   <Button type="submit" variant="primary" className="px-12">
-                    Send Message
+                    Submit
                   </Button>
                 </div>
               </form>
